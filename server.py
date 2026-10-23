@@ -1,18 +1,12 @@
 import os
-import threading
 import subprocess
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
-# 1. Fungsi untuk menjalankan Hermes Gateway secara background thread
-def run_gateway():
-    print("Starting Hermes Gateway...")
-    subprocess.run(["hermes", "gateway", "run"])
+# 1. Jalankan Hermes Gateway di background menggunakan Popen
+print("Starting Hermes Gateway...")
+gateway_process = subprocess.Popen(["hermes", "gateway", "run"])
 
-# 2. Jalankan gateway di thread terpisah agar tidak memblokir server HTTP
-gateway_thread = threading.Thread(target=run_gateway, daemon=True)
-gateway_thread.start()
-
-# 3. Server HTTP mini agar Render mendeteksi port terbuka dan lolos health check
+# 2. Server HTTP mini untuk memenuhi aturan port Render
 class SimpleHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
