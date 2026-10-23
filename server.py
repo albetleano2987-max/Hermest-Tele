@@ -1,14 +1,24 @@
 import os
 import threading
 import subprocess
+import sys
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
-# 1. Fungsi untuk menjalankan Hermes Gateway di thread latar belakang
+# 1. Fungsi untuk menjalankan Hermes Gateway di background thread dengan unbuffered output
 def run_gateway():
-    print("Starting Hermes Gateway...")
-    subprocess.run(["hermes", "gateway", "run"])
+    print("Starting Hermes Gateway thread...")
+    process = subprocess.Popen(
+        ["hermes", "gateway", "run"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1
+    )
+    # Teruskan log gateway langsung ke terminal Render secara real-time
+    for line in process.stdout:
+        print(line, end="", flush=True)
 
-# 2. Jalankan gateway menggunakan thread terpisah agar tidak memblokir server HTTP
+# 2. Jalankan gateway di thread terpisah agar tidak memblokir server HTTP
 gateway_thread = threading.Thread(target=run_gateway, daemon=True)
 gateway_thread.start()
 
