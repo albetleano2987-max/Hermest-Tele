@@ -1,11 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "services": {
-    "web": {
-      "root": ".",
-      "framework": "other"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
