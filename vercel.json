@@ -1,29 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "services": {
-    "app": {
-      "root": ".",
-      "framework": "fastapi"
-    },
-    "bootstrap-installer": {
-      "root": "apps/bootstrap-installer",
-      "framework": "vite"
-    },
-    "desktop": {
-      "root": "apps/desktop",
-      "framework": "vite"
-    },
-    "web": {
-      "root": "web",
-      "framework": "vite"
-    },
-    "website": {
-      "root": "website",
-      "framework": "docusaurus-2"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
