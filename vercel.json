@@ -9,10 +9,6 @@
       "root": "apps/bootstrap-installer",
       "framework": "vite"
     },
-    "src-tauri": {
-      "root": "apps/bootstrap-installer/src-tauri",
-      "runtime": "rust"
-    },
     "desktop": {
       "root": "apps/desktop",
       "framework": "vite"
