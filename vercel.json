@@ -13,14 +13,6 @@
       "root": "apps/desktop",
       "framework": "vite"
     },
-    "dcf-model": {
-      "root": "optional-skills/finance/dcf-model",
-      "runtime": "python"
-    },
-    "pm": {
-      "root": "pm",
-      "runtime": "python"
-    },
     "web": {
       "root": "web",
       "framework": "vite"
